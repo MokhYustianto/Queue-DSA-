@@ -1,0 +1,94 @@
+///Program Memasukkan Bilangan 3 pada suatu deretan angka Menggunakan Konsep Circular Queue///Mokh.Yustianto.R///
+
+#include<stdio.h>
+
+using namespace std;
+
+class Cqueue{ ///Cqueue itu sama dengan Circular Queue///
+	
+	int rear, front; ///initalisasi untuk depan dan belakang Circular Queue atau antrian melingkar///
+	int size; ///Untuk Circular Queue///
+	int *arr; ///Untuk Circular Queue///
+	
+	
+public:
+	Cqueue(int s){
+		front = rear = -1;
+		size = s;
+		arr = new int(s);
+	}
+	void enQueue(int value);
+	void displayQueue();
+};
+
+
+///Sebuah operasi atau fungsi untuk membuat Deretan Angka atau Elemen Circular Queue///
+void Cqueue ::enQueue(int value){
+	if((front == 0 && rear == size-1)||(rear ==(front-1)%(size-1)))
+	{
+		printf("\nAntrian tersebut sudah penuh");
+		return;
+	}
+	else if (front == -1)//Untuk Insert First Element//
+	{
+		front = rear = 0;
+		arr[rear] = value;
+	}
+	else if (rear == size-1 && front != 0)
+	{
+		rear = 0;
+		arr[rear] = value;
+	}
+	else
+	{
+		rear++;
+		arr[rear] = value;
+	}
+}
+
+///Sebuah operasi atau fungsi untuk menampilkan Deretan Angka atau Elemen Circular Queue///
+void Cqueue ::displayQueue(){
+	
+	if (front == -1)
+	{
+		printf("\nAntrian tersebut kosong");
+		return;
+	}
+	printf("\nDeretan Angka Program Memasukkan bilangan tiga = \n");
+	if (rear >= front)
+	{
+		for(int i = front; i <= rear; i++) 
+		printf("%d ", arr[i]);
+	}
+}
+
+//Penggerak Programnya//Int_Main///
+int main(){
+	
+	printf("Program Memasukkan Bilangan tiga pada deretan angka menggunakan Konsep C.Queue Mokh.Yustianto.R\n");
+	printf("---------------------------------------------------------------------------\n");
+	Cqueue q(13); //Jumlah Deretan Angka atau elemen pada Circular Angka yang ditentukan//
+	
+	//Dibawah ini yang dimaksudkan untuk memasukkan deretan angka atau elemen untuk Circular Queue//
+	q.enQueue(7);
+	q.enQueue(19);
+    q.enQueue(72);
+    q.enQueue(44);
+    q.enQueue(62);
+    q.enQueue(10);
+    q.enQueue(9);
+    q.enQueue(34);
+    q.enQueue(50);
+    q.enQueue(27);
+    q.enQueue(83);
+    q.enQueue(4);
+    
+    q.displayQueue();
+    
+    q.enQueue(3);
+    
+    q.displayQueue();
+    
+    return 0;
+
+}
