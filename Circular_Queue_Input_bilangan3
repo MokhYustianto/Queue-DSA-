@@ -65,13 +65,14 @@ void Cqueue ::displayQueue(){
 //Penggerak Programnya//Int_Main///
 int main(){
 	
-	printf("Program Memasukkan Bilangan tiga pada deretan angka menggunakan Konsep C.Queue Mokh.Yustianto.R\n");
-	printf("---------------------------------------------------------------------------\n");
-	Cqueue q(13); //Jumlah Deretan Angka atau elemen pada Circular Angka yang ditentukan//
+     printf("Program Memasukkan Bilangan tiga pada deretan angka menggunakan Konsep C.Queue Mokh.Yustianto.R\n");
+     printf("---------------------------------------------------------------------------\n");
+     Cqueue q(13); //Jumlah Deretan Angka atau elemen pada Circular Angka yang ditentukan//
 	
-	//Dibawah ini yang dimaksudkan untuk memasukkan deretan angka atau elemen untuk Circular Queue//
-	q.enQueue(7);
-	q.enQueue(19);
+     //Dibawah ini yang dimaksudkan untuk memasukkan deretan angka atau elemen untuk Circular Queue//
+     //diketahui deretan angka nya adalah 7,19,72,44,62,10,9,34,50,27,83,4//
+    q.enQueue(7);
+    q.enQueue(19);
     q.enQueue(72);
     q.enQueue(44);
     q.enQueue(62);
