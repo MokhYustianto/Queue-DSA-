@@ -1,0 +1,93 @@
+///Program Queue Operation untuk menghapus suatu angka///Mokh.Yustianto.R///
+
+#include<stdio.h>
+#include <stdlib.h>
+#include <bits/stdc++.h>
+
+using namespace std;
+ 
+//Sebuah Fungsi untuk Meghapus sebuah elemen Queue yang diinginkan//
+void deQueue(int t, queue<int>& q)
+{
+ 
+    //Helper queue untuk menyimpan elemen queue//
+    queue<int> ref;
+    int s = q.size();
+    int cnt = 0;
+ 
+    //Untuk menemukan elemen yang diinginkan untuk dihapus//
+    while (q.front() != t and !q.empty()) {
+        ref.push(q.front());
+        q.pop();
+        cnt++;
+    }
+ 
+    //Apabila elemen tersebut tidak ditemukan//
+    if (q.empty()) {
+        cout << "Elemen Tersebut tidak dapat ditemukan" << endl;
+        while (!ref.empty()) {
+ 
+            // Pushing all the elements back into q
+            q.push(ref.front());
+            ref.pop();
+        }
+    }
+ 
+    //Ini Jika elemen nya ditemukan//
+    else {
+        q.pop();
+        while (!ref.empty()) {
+ 
+            //Untuk Memasukkan elemen ke "q"//
+            q.push(ref.front());
+            ref.pop();
+        }
+        int k = s - cnt - 1;
+        while (k--) {
+ 
+            //Untuk Memasukkan elemen "q" ke belakang//
+            int p = q.front();
+            q.pop();
+            q.push(p);
+        }
+    }
+}
+ 
+//Sebuah fungsi untuk display//
+void print(queue<int> qr)
+{
+	cout<<"Deretan Angka Queue Penghapusan angka 81 : "<<endl;
+    
+    while (!qr.empty()) {
+    cout << qr.front() << " ";
+    qr.pop();
+    }
+    cout <<endl;
+}
+ 
+// Driver Code
+int main()
+{
+    queue<int> q;
+ 
+    //Memasukkan Deretan angka atau elemen ke Queue//Diketahui Deretan Angka nya adalah 67,8,31,55,70,3, 81, 47, 29, 62, 45,//
+    q.push(67);
+    q.push(8);
+    q.push(31);
+    q.push(55);
+    q.push(70);
+    q.push(3);
+    q.push(81);
+    q.push(47);
+    q.push(29);
+    q.push(62);
+    q.push(45);
+    print(q);
+ 
+   
+ 
+    //Menghapus angka 81 dari deretan angka keluar dari Queue//
+    deQueue(81, q);
+    print(q);
+    return 0;
+}
